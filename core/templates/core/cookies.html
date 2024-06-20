@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .cookie-policy-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #1a1717;
+        }
+        
+        .cookie-policy-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .cookie-policy-container p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        #cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f0f0f0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cookie-consent-banner" class="bg-light p-3">
+        <p class="m-0">We use cookies to ensure you get the best experience on our website. 
+            <a href="{% url 'core:cookies' %}" id="read-more">Read more</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button id="accept-cookies" onclick="acceptCookies()" class="btn btn-primary">Accept</button>
+            <button id="deny-cookies" onclick="denyCookies()" class="btn btn-secondary">Deny</button>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Welcome to Our Website!</h1>
+        <div class="jumbotron">
+            <p><strong>Cookie Policy</strong></p>
+
+            <p>This Cookie Policy explains how [Your Company Name] ("we", "us", or "our") uses cookies and similar technologies to recognize you when you visit our website at [Your Website URL] ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
+
+            <h4>What are cookies?</h4>
+            <p>Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners to make their websites work, or to work more efficiently, as well as to provide reporting information.</p>
+
+            <h4>Cookies we use</h4>
+            <ul>
+                <li><strong>Essential cookies:</strong> These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions.</li>
+                <li><strong>Analytics cookies:</strong> These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</li>
+                <li><strong>Marketing cookies:</strong> These cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user.</li>
+            </ul>
+
+            <h4>How we use cookies</h4>
+            <p>We use cookies for several purposes, including:</p>
+            <ul>
+                <li><strong>Authentication:</strong> We use cookies to identify you when you visit our website and as you navigate our website.</li>
+                <li><strong>Personalization:</strong> We use cookies to store information about your preferences and to personalize the website for you.</li>
+                <li><strong>Security:</strong> We use cookies to support security features that help us detect malicious activity and violations of our policies.</li>
+                <li><strong>Advertising:</strong> We use cookies to help us deliver advertisements that are relevant to you.</li>
+            </ul>
+
+            <h4>Managing cookies</h4>
+            <p>You can control and manage cookies in various ways. Please keep in mind that removing or blocking cookies can impact your user experience and parts of our website may no longer be fully accessible.</p>
+            <ul>
+                <li><strong>Browser controls:</strong> You can set or amend your web browser controls to accept or refuse cookies. If you choose to reject cookies, you may still use our website though your access to some functionality and areas of our website may be restricted.</li>
+                <li><strong>Advertising opt-outs:</strong> You can opt out of receiving targeted advertising cookies from members of the Network Advertising Initiative (NAI) on the NAI's website.</li>
+            </ul>
+
+            <h4>Changes to this Cookie Policy</h4>
+            <p>We may update this Cookie Policy from time to time to reflect changes to the cookies we use or for other operational, legal, or regulatory reasons. Please revisit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.</p>
+
+            <h4>Contact Us</h4>
+            <p>If you have any questions about our use of cookies, please contact us:</p>
+            <ul>
+                <li>By email: <a href="mailto:support@prouessefashion.com">support@prouessefashion.com</a></li>
+                <li>By visiting this page on our website: <a href="{% url 'core:contact' %}">contact us</a></li>
+            </ul>
+
+            <p>This Cookie Policy was last updated on [Date].</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to set cookie with consent
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to get cookie value by name
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1, cookie.length);
+                }
+                if (cookie.indexOf(nameEQ) == 0) {
+                    return cookie.substring(nameEQ.length, cookie.length);
+                }
+            }
+            return null;
+        }
+
+        // Function to handle accepting cookies
+        function acceptCookies() {
+            setCookie('cookie_consent', 'accepted', 365); // Store cookie consent for 365 days
+            window.location.href = '/'; // Redirect to homepage
+        }
+
+        // Function to handle denying cookies
+        function denyCookies() {
+            setCookie('cookie_consent', 'denied', 365); // Store cookie denial for 365 days
+            window.location.href = '/'; // Redirect to homepage
+        }
+
+        // Check if user has previously accepted cookies
+        document.addEventListener('DOMContentLoaded', function() {
+            var cookieConsent = getCookie('cookie_consent');
+            if (!cookieConsent) {
+                document.getElementById('cookie-consent-banner').style.display = 'flex'; // Show cookie consent banner
+            }
+        });
+    </script>
+</body>
+</html>

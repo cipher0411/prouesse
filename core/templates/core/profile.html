@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Profile</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <p class="form-control-static">{{ profile.user.username }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <p class="form-control-static">{{ profile.user.email }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <p class="form-control-static">{{ profile.phone }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <p class="form-control-static">{{ profile.address }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <p class="form-control-static">{{ profile.city }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode">Postcode:</label>
+                        <p class="form-control-static">{{ profile.postcode }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <p class="form-control-static">{{ profile.country }}</p>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'core:update_user' %}" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends "core/base.html" %}
+{% block title %}Verify OTP{% endblock %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Login</h2>
+            </div>
+            <div class="col-12">
+                <a href="#">Home</a>
+                <a href="#">Gallery</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" style="background-color: #b98936;">
+                    <h2 class="text-center">Verify OTP</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="otp">OTP</label>
+                            <input type="text" name="otp" class="form-control" id="otp" required>
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

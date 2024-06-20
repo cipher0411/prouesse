@@ -1,0 +1,41 @@
+<!-- item/my_orders.html -->
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 p-3 text-white" style="background-color: #990f4b;">My Orders</h1>
+    <div class="row">
+        {% for order in orders %}
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Order #{{ order.id }}</h5>
+                    <p class="card-text">Date: {{ order.date }}</p>
+                    <p class="card-text">Status: {{ order.status }}</p>
+                    <div>
+                        <h5>Order Details:</h5>
+                        <p><strong>Item:</strong> {{ order.item.name }}</p>
+                        <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+                        <p><strong>Address:</strong> {{ order.address }}</p>
+                        <p><strong>Phone:</strong> {{ order.phone }}</p>
+                        {% if order.first_name %}
+                            <p><strong>Name:</strong> {{ order.first_name }} {{ order.last_name }}</p>
+                        {% endif %}
+                        {% if order.email %}
+                            <p><strong>Email:</strong> {{ order.email }}</p>
+                        {% endif %}
+                        <p><strong>City:</strong> {{ order.city }}</p>
+                        <p><strong>Country:</strong> {{ order.country }}</p>
+                        <p><strong>Post Code:</strong> {{ order.post_code }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-md-12">
+            <p>No orders found.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

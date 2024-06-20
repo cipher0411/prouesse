@@ -1,0 +1,112 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-6">
+    <div class="row">
+        <div class="col-lg-5">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                    {% for image in item.images.all %}
+                        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                            <img src="{{ image.image.url }}" class="d-block w-100" style="max-height: 500px; object-fit: cover;" alt="...">
+                            {% if item.is_sale %}
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2">SALE!!!</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-7 p-6 bg-light rounded-xl">
+            <h1 class="mb-6">{{ item.name }}</h1>
+            <!-- <p class="text-muted"><strong>Item ID: </strong>{{ item.id }}</p> -->
+            <p class="text-muted"><strong>Price: </strong>
+                {% if item.is_sale %}
+                    <span class="text-decoration-line-through">{{ item.price }}</span>
+                    <span class="text-danger">£{{ item.sale_price }}</span>
+                {% else %}
+                    £{{ item.price }}
+                {% endif %}
+            </p>
+            <p class="text-muted"><strong>Seller: </strong>{{ item.created_by.username }}</p>
+
+            {% if item.description %}
+                <p class="text-dark">
+                    <strong class="text-muted">Description:</strong><br>
+                    {{ item.description }}
+                </p>
+            {% endif %}
+
+            {% if request.user == item.created_by %}
+                <div class="mt-6 p-6 bg-white rounded-xl">
+                    <p>This is your item!</p>
+                    <a href="{% url 'item:edit' item.id %}" class="btn btn-success mt-3">Edit</a>
+                    <a href="{% url 'item:delete' item.id %}" class="btn btn-danger mt-3">Delete</a>
+                </div>
+            {% else %}
+                <div>
+                    <button type="button" value="{{ item.id }}" class="btn btn-primary mt-3 add-to-cart-btn">Add to Cart</button>
+                    <a href="{% url 'conversation:new' item.id %}" class="btn btn-secondary mt-3">Offer | Chat</a>
+                    <a href="{% url 'billing:shipping' %}?item_id={{ item.id }}" class="btn btn-warning mt-3">Buy Now</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container mt-6">
+    <div class="px-6 py-4 bg-light rounded-xl">
+        <h2 class="mb-4 text-center">Related Items</h2>
+
+        <div class="row">
+            {% for related_item in related_items %}
+                <div class="col-md-4 mb-4">
+                    <a href="{% url 'item:detail' related_item.id %}" class="text-decoration-none text-dark">
+                        <div class="card h-100 shadow-sm">
+                            <div id="carouselRelatedItem{{ related_item.id }}" class="carousel slide" data-bs-ride="false">
+                                <div class="carousel-inner">
+                                    {% for image in related_item.images.all %}
+                                        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                                            <img src="{{ image.image.url }}" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="...">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselRelatedItem{{ related_item.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselRelatedItem{{ related_item.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ related_item.name }}</h5>
+                                <p class="card-text text-muted">
+                                    {% if related_item.is_sale %}
+                                        <span class="text-decoration-line-through">Price: £{{ related_item.price }}</span><br>
+                                        <span class="text-danger">Sale Price: £{{ related_item.sale_price }}</span>
+                                    {% else %}
+                                        Price: £{{ related_item.price }}
+                                    {% endif %}
+                                </p>
+                                <!-- <p class="text-muted"><strong>Item ID: </strong>{{ related_item.id }}</p> -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

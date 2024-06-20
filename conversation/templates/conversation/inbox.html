@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">Inbox</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="list-group">
+                {% for conversation in conversations %}
+                <a href="{% url 'conversation:detail' conversation.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Conversation with {{ conversation.other_member.username }}</h5>
+                        <small>{{ conversation.modified_at }}</small>
+                    </div>
+                    <div class="d-flex align-items-center mb-1">
+                        <img src="{{ conversation.item.images.first.image.url }}" alt="{{ conversation.item.name }}" class="img-thumbnail mr-3" style="max-width: 80px;">
+                        <div>
+                            <p class="mb-1"><strong>Item:</strong> {{ conversation.item.name }}</p>
+                            <p class="mb-1"><strong>Description:</strong> {{ conversation.item.description }}</p>
+                            <p class="mb-1"><strong>Price:</strong> ${{ conversation.item.price }}</p>
+                            <!--  <p><strong>Condition:</strong> {{ conversation.item.condition }}</p>  -->
+                            <p class="mb-1"><strong>From:</strong> {{ conversation.item.created_by.username }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

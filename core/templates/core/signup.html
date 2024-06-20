@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="mb-0 text-center">Sign Up</h1>
+                </div>
+                <div class="card-body" style="background-color: #c0c0c0;">
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if form.errors or form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            {% endfor %}
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
+                        <div class="form-group form-check">
+                            {{ form.terms_accepted }}
+                            <label class="form-check-label">
+                                I have read the <a href="{% url 'core:terms_and_conditions' %}" target="_blank">terms and conditions</a>
+                            </label>
+                            {% if form.terms_accepted.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.terms_accepted.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Submit</button>
+                    </form>
+                    <div class="mt-3">
+                        <a href="{% url 'core:forgot_password' %}" style="color: #990f4b;">Forgot password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3 text-center">
+        Already have an account? <a href="{% url 'core:login' %}" style="color: #990f4b;">Log In</a>
+    </div>
+</div>
+{% endblock %}

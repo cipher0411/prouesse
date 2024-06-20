@@ -1,0 +1,39 @@
+<!-- billing/templates/billing/payment.html -->
+
+{% extends 'core/base.html' %}
+
+{% block title %}Payment{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container mt-6">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="mb-0 text-center">Payment for {{ item.name }}</h1>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <form action="{% url 'billing:payment' item.id %}" method="post">
+                        {% csrf_token %}
+                        <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="{{ STRIPE_PUBLIC_KEY }}"
+                            data-amount="{{ amount }}"
+                            data-name="{{ item.name }}"
+                            data-description="Payment for {{ item.name }}"
+                            data-image="{% static 'images/logo2.png' %}"
+                            data-locale="auto"
+                            data-currency="gbp">
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-6 py-4 bg-light rounded-xl">
+        <h2 class="mb-4 text-center">My items</h2>
+
+        <div class="row">
+            {% for item in items %}
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-dark">
+                    <div class="card h-100">
+                        <img src="{{ item.image.url }}" class="card-img-top rounded-t-xl">
+                        <div class="card-body">
+                            <h2 class="card-title h5">{{ item.name }}</h2>
+                            <p class="card-text text-muted">Price: {{ item.price }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

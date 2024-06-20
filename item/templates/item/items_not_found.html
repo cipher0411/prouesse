@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-warning" role="alert">
+        No items found for your search "{{ query }}".
+    </div>
+    <a href="{% url 'item:items' %}" class="btn btn-primary">Back to Items</a>
+</div>
+{% endblock %}

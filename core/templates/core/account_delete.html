@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h1 class="mb-0 text-center">Delete Account</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_confirm_email">Confirm Email:</label>
+                            {{ form.confirm_email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_reason_for_deletion">Reason for Deletion:</label>
+                            {{ form.reason_for_deletion }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_confirm_deletion">Confirm Deletion:</label>
+                            {{ form.confirm_deletion }}
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-danger rounded-pill px-4">Delete Account</button>
+                            <a href="{% url 'core:index' %}" class="btn btn-success rounded-pill px-4 ml-2">Go back to homepage</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

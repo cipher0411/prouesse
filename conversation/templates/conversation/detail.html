@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Conversation{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">Conversation</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="space-y-6">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title">Item Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex">
+                            {% for image in conversation.item.images.all %}
+                            <a href="{% url 'item:detail' conversation.item.id %}">
+                                <img src="{{ image.image.url }}" alt="{{ conversation.item.name }}" class="img-thumbnail mr-3" style="max-width: 120px;">
+                            </a>
+                            {% endfor %}
+                            <div>
+                                <p><strong>Name:</strong> {{ conversation.item.name }}</p>
+                                <p><strong>Description:</strong> {{ conversation.item.description }}</p>
+                                <p><strong>Price:</strong> ${{ conversation.item.price }}</p>
+                                <!--  <p><strong>Condition:</strong> {{ conversation.item.condition }}</p>  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for message in conversation.messages.all %}
+                    <div class="p-4 {% if message.created_by == request.user %}bg-primary text-white{% else %}bg-light{% endif %} rounded mb-3">
+                        <p class="mb-1"><strong>{{ message.created_by.username }}</strong> @ {{ message.created_at }}</p>
+                        <p>{{ message.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Send Message</h5>
+                    <form method="post" action="{% url 'conversation:detail' conversation.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.content.label_tag }}
+                            {{ form.content }}
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-pill">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

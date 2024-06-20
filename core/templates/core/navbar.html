@@ -1,0 +1,132 @@
+{% load static %}
+
+{% block content %}
+{% load static %}
+<!-- Topbar Start -->
+<div class="container-fluid bg-primary text-white d-none d-lg-flex" style="margin-bottom: 20px;">
+    <div class="container py-3">
+        <div class="d-flex align-items-center">
+            <a href="{% url 'core:index' %}" style="text-decoration: none; color: white;">
+                <h1 class="m-0" style="color: inherit;">
+                    <i class="fa fa-scissors me-3" style="color: inherit;"></i>PROUESSE
+                </h1>
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <small class="ms-4"><i class="fa fa-envelope me-3"></i>support@prouessefashion.com</small>
+                <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+447466023608</small>
+                <div class="ms-3 d-flex">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-whatsapp fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-pinterest fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square" href=""><i class="fab fa-tiktok fw-normal"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-white sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
+            <a href="{% url 'core:index' %}" class="navbar-brand d-lg-none">
+                <h1 class="m-0"><i class="fa fa-scissors me-3"></i>PROUESSE</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{% url 'core:index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                    <a href="{% url 'core:courses' %}" class="nav-item nav-link {% if request.path == '/courses/' %}active{% endif %}">Courses</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{% url 'core:training' %}" class="dropdown-item">Training</a>
+                            <a href="{% url 'core:ready_to_wear' %}" class="dropdown-item">Ready To Wear</a>
+                            <a href="{% url 'core:custom_made' %}" class="dropdown-item">Custom Made Dresses</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'core:contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+                    <a href="{% url 'core:student_portal' %}" class="nav-item nav-link {% if request.path == '/student_portal/' %}active{% endif %}">Student Portal</a>
+                    <a href="{% url 'core:about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+                    <a href="{% url 'item:new' %}" class="nav-item nav-link {% if request.path == '/item/new/' %}active{% endif %}">Sell Items</a>
+                    <a href="{% url 'item:items' %}" class="nav-item nav-link {% if request.path == '/item/items/' %}active{% endif %}">Market Place</a>
+                </div>
+                <div class="ms-auto d-lg-flex align-items-center">
+                    {% if request.user.is_authenticated %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == 'logout' %}
+                                    <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <a href="{% url 'conversation:inbox' %}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-2">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                          
+
+                        <div class="nav-item dropdown ms-2">
+                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4 nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+                                <a href="{% url 'core:profile' %}" class="dropdown-item">Profile</a>
+                                <a href="{% url 'dashboard:index' %}" class="dropdown-item">Dashboard</a>
+                                <a href="{% url 'core:update_user' %}" class="dropdown-item">Update Account</a>
+                                <a href="{% url 'item:my_orders' %}" class="dropdown-item">My Orders</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{% url 'core:delete_account' %}" class="dropdown-item text-danger">Delete Account</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{% url 'core:logout' %}" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
+                        
+                        <div class="cart-wrapper ms-3">
+                            
+                                <i class="fa fa-shopping-cart cart-icon"></i> Cart
+                                <span class="badge bg-dark text-warning ms-1 rounded-pill" id="car_quantity">{{ request.user.cart.items.count }}</span>
+                            </a>
+                        </div>
+                        
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == 'login' %}
+                                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% else %}
+                        <a href="{% url 'core:signup' %}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Sign Up</a>
+                        <a href="{% url 'core:login' %}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Login</a>
+                        <div class="cart-wrapper ms-3">
+                           
+                                <i class="fa fa-shopping-cart cart-icon"></i> Cart
+                                <span class="badge bg-dark text-warning ms-1 rounded-pill" id="car_quantity">{{ request.user.cart.items.count }}</span>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" integrity="sha512-5/DRrRvnOgoBpmipylXU5GpRj2T9/SzvJDFql1IN5O1U75ZrCN1kuxRxR6DdVDU/ef5x38FlPQuCPpTY4ExE2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9j5qPLm5i5eL6y0ASpWj5Q+U8/IhOh1eZwXxRZiGe8enYz47ub8Qpuy" crossorigin="anonymous"></script>
+
+{% endblock %}

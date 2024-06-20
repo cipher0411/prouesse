@@ -1,0 +1,130 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Market Place{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Search form -->
+        <div class="col-md-12 mb-4">
+            <div class="bg-light p-3 rounded-lg">
+                <h3 class="text-xl font-bold mb-3">Search for products</h3>
+                <form method="get" action="{% url 'item:items' %}">
+                    <div class="input-group">
+                        <input name="query" class="form-control rounded-pill py-2" type="text" value="{{ query }}" placeholder="Search items...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-pill px-4" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-md-8">
+            <div class="row">
+                {% for item in items %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 position-relative">
+                        <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-dark">
+                            <div id="carouselExampleControls-{{ item.id }}" class="carousel slide">
+                                <div class="carousel-inner">
+                                    {% for image in item.images.all %}
+                                        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                                            <img src="{{ image.image.url }}" class="d-block w-100 img-fluid" style="height: 350px; object-fit: cover;" alt="...">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-{{ item.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-{{ item.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            {% if item.is_sale %}
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2">SALE!!!</span>
+                            {% endif %}
+                            <div class="card-body">
+                                <h2 class="card-title h5">{{ item.name }}</h2>
+                                <p class="card-text text-muted">
+                                    {% if item.is_sale %}
+                                        <span class="text-decoration-line-through">Price: £{{ item.price }}</span>
+                                        <span class="text-danger">Sale Price: £{{ item.sale_price }}</span>
+                                    {% else %}
+                                        Price: £{{ item.price }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-4">
+                    {% if items.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1{% if query %}&query={{ query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}">&laquo;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ items.previous_page_number }}{% if query %}&query={{ query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in items.paginator.page_range %}
+                        {% if items.number == num %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if items.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ items.next_page_number }}{% if query %}&query={{ query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ items.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <!-- End Pagination -->
+            
+        </div>
+
+        <!-- Categories -->
+        <div class="col-md-4">
+            <div class="bg-light p-3 rounded-lg">
+                <h3 class="text-xl font-bold mb-3">Categories</h3>
+                <ul class="list-group text-decoration-none mb-2">
+                    {% for category in categories %}
+                        <li class="list-group-item{% if category.id == category_id %} active{% endif %}">
+                            <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}" class="text-dark category-link">
+                                {% if category.id == category_id %}
+                                    <strong>{{ category.name }}</strong>
+                                {% else %}
+                                    {{ category.name }}
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+                <hr class="my-2">
+
+                <p class="font-semibold">Clear filters</p>
+                <a href="{% url 'item:items' %}" class="btn btn-warning">Clear</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
