@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Profile, otp_Profile
 from django.contrib.admin import AdminSite
+from .models import Contact
+
+
+
+
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'address', 'city', 'postcode', 'country')
@@ -31,3 +36,12 @@ admin.site.register(Profile, ProfileAdmin)
 @admin.register(otp_Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'otp')
+
+
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'service', 'submitted_at')
+    search_fields = ('name', 'email', 'service')
+    list_filter = ('service', 'submitted_at')

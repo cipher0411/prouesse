@@ -55,8 +55,8 @@
                 </div>
             {% else %}
                 <div>
-                    <button type="button" value="{{ item.id }}" class="btn btn-primary mt-3 add-to-cart-btn">Add to Cart</button>
-                    <a href="{% url 'conversation:new' item.id %}" class="btn btn-secondary mt-3">Offer | Chat</a>
+                    <!--                    <button type="button" value="{{ item.id }}" class="btn btn-primary mt-3 add-to-cart-btn">Add to Cart</button>-->
+                    <a href="{% url 'conversation:new' item.id %}" class="btn btn-secondary mt-3">Ask Seller</a>
                     <a href="{% url 'billing:shipping' %}?item_id={{ item.id }}" class="btn btn-warning mt-3">Buy Now</a>
                 </div>
             {% endif %}

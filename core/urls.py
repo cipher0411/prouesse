@@ -35,6 +35,7 @@ urlpatterns = [
     path('forgot_password/', ForgotPasswordView.as_view(), name='forgot_password'),
     path('verify_otp/', VerifyOTPView.as_view(), name='verify_otp'),
     path('reset_password/', ResetPasswordView.as_view(), name='reset_password'),
+    path('faq/', views.faq_view, name='faq'),
     path('admin/', admin.site.urls),  # Default Django admin
     
 ]

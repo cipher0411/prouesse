@@ -1,0 +1,56 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Upload and Delete Images{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Upload Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ upload_form.as_p }}
+        <button type="submit" class="btn btn-primary" name="upload">Upload</button>
+    </form>
+
+    <h2 class="mt-5">Delete Image</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ delete_form.as_p }}
+        <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+    </form>
+
+    <h2 class="mt-5">Images</h2>
+    <div class="row">
+        {% for image in images %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center" style="background-color: #b98936; color: white;">
+                    <h5 class="card-title m-0">{{ image.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="image-container mb-3">
+                        <img src="{{ image.image.url }}" class="img-fluid" alt="{{ image.title }}">
+                    </div>
+                    <p class="card-text">{{ image.description }}</p>
+                    <form method="post" action="{% url 'gallery:upload_delete_images' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="image_id" value="{{ image.id }}">
+                        <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .image-container {
+        height: 300px;
+        overflow: hidden;
+    }
+    .image-container img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}

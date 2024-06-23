@@ -1,0 +1,11 @@
+/* static/css/custom_admin.css */
+
+/* Change header background color */
+#header {
+  background-color: #990f4b; /* Your desired color */
+}
+
+/* Optional: Change text color */
+#header h1, #header h2 {
+  color: white; /* Your desired text color */
+}

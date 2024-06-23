@@ -151,3 +151,18 @@
             }
         });
     });
+
+
+
+    //Calendly linking
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('scheduleMeetingButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        Calendly.initPopupWidget({
+            url: 'https://calendly.com/estheradanma010/prouesse-fashion-meeting',
+            color: '#0069ff',
+            textColor: '#ffffff',
+            branding: false
+        });
+    });
+});

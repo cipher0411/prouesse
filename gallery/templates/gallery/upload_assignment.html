@@ -1,0 +1,13 @@
+{% extends "gallery/base.html" %}
+{% load static %}
+{% block title %}Upload Assignment{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Upload Assignment</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "gallery/base.html" %}
+{% load static %}
+{% block title %}Student Portal{% endblock %}
+
+{% block content %}
+
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Student Portal</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'core:index' %}">Home</a>
+                <a href="{% url 'core:login' %}">Login</a>
+                <a href="{% url 'gallery:gallery' %}">Video Gallery</a>
+                <a href="{% url 'gallery:image_gallery' %}">Image Gallery</a>
+                <a href="{% url 'core:ebook' %}">Upload / Delete</a>
+                <a href="{% url 'core:ebook' %}">Ebooks</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">My Gallery</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'upload_delete_videos' %}">Upload/Delete Videos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'upload_delete_images' %}">Upload/Delete Images</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'image_gallery' %}">Image Gallery</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endblock %} 

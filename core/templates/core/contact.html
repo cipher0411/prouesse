@@ -11,64 +11,84 @@
 
                 
                 <div class="col-lg-6">
-                    <h1 class="text-white mb-3">Get in Touch</h1>
+                    <h2>Get in Touch</h2>
                     <p><i class="text-light fa fa-phone me-3"></i>+447466023608</p>
                     <p><i class="text-light fa fa-envelope me-3"></i>support@prouessefashion.com</p>
                     <p class="text-white mb-4"><span class="text-custom">100%</span> We are here for you any time you need our services.</p>
                     
-                    <form id="emailForm">
-                      <div class="row g-3">
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="text" class="form-control bg-white border-0" id="name" placeholder="Your Name">
-                                  <label for="name">Your Name</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="email" class="form-control bg-white border-0" id="email" placeholder="Your Email">
-                                  <label for="email">Your Email</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="text" class="form-control bg-white border-0" id="phone" placeholder="Your Phone Number">
-                                  <label for="phone">Your Phone Number</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <select class="form-select bg-white border-0" id="service">
-                                      <option value="" disabled selected>Select Service</option>
-                                      <option value="Training">Training</option>
-                                      <option value="Ready to Wear Dress">Ready to Wear Dress</option>
-                                      <option value="Custom Made Dress">Custom Made Dress</option>
-                                      <option value="Others">Others</option>
-                                  </select>
-                                  <label for="service">Service</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <div class="form-floating">
-                                  <textarea class="form-control bg-white border-0" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                  <label for="message">Special Request</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <button class="btn btn-primary text-white w-100 py-3" type="submit">Send Message</button>
-                          </div>
-                      </div>
-                  </form>
-              
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-white border-0" id="id_name" name="name" placeholder="Your Name">
+                                    <label for="id_name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control bg-white border-0" id="id_email" name="email" placeholder="Your Email">
+                                    <label for="id_email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-white border-0" id="id_phone" name="phone" placeholder="Your Phone Number">
+                                    <label for="id_phone">Your Phone Number</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select bg-white border-0" id="id_service" name="service">
+                                        <option value="" disabled selected>Select Service</option>
+                                        <option value="Training">Training</option>
+                                        <option value="Ready to Wear Dress">Ready to Wear Dress</option>
+                                        <option value="Custom Made Dress">Custom Made Dress</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <label for="id_service">Service</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control bg-white border-0" id="id_message" name="message" placeholder="Special Request" style="height: 100px"></textarea>
+                                    <label for="id_message">Special Request</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary text-white w-100 py-3" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="section-booking-title pe-3">Meeting</h5>
                     <h1 class="text-white mb-4">Online Meeting</h1>
                     <p class="text-white mb-4">You can schedule a Zoom meeting with our admin for more clarification if necessary.</p>
-                    <a href="#" id="scheduleMeetingButton" class="btn btn-light text-dark rounded-pill py-3 px-5 mt-2">Schedule a meeting</a>
+                    <a href="https://calendly.com/estheradanma010/prouesse-fashion-meeting" id="scheduleMeetingButton" class="btn btn-light text-dark rounded-pill py-3 px-5 mt-2">Schedule a meeting</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- contact End -->
 {% endblock %} 
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+ <!-- Calendly badge widget end -->
+ <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+ <script>
+        //Calendly linking
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('scheduleMeetingButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        Calendly.initPopupWidget({
+            url: 'https://calendly.com/estheradanma010/prouesse-fashion-meeting',
+            color: '#0069ff',
+            textColor: '#ffffff',
+            branding: false
+        });
+    });
+});
+ </script>

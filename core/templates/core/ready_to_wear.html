@@ -1,9 +1,101 @@
 {% extends "core/base.html" %}
-
-{% block title %}Contact{% endblock %}
+{% load static %}
+{% block title %}Ready to Wear{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>ready to wear page page page</h1>
+
+
+  <!-- Page Header Start -->
+  <div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Ready to Wear</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'core:index' %}">Home</a>
+                <a href="{% url 'core:ready_to_wear' %}">Ready to Wear</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+
+
+
+<!-- Start video-sec Area -->
+<section class="video-sec-area section-gap" id="about">
+<div class="container" id="training1">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4">Discover Our Ready to Wear Collection</h1>
+            <p class="lead mb-10 text-custom"><span>Effortless Style for Every Occasion</span></p>
+            <p>At Prouesse Fashion, we offer a stunning collection of ready-to-wear clothes, majorly featuring traditional and modern African attires. Our ready-to-wear collection is designed to provide you with high-quality, stylish outfits that are perfect for any occasion.</p>
+            <p>Our African attires are crafted with vibrant fabrics and unique patterns that reflect the rich cultural heritage of Africa. Each piece is meticulously designed to offer you comfort and elegance, making you stand out wherever you go.</p>
+            <p>Whether you are attending a formal event, a casual gathering, or just looking to add a touch of African elegance to your wardrobe, our ready-to-wear collection has something for everyone. Browse our collection and find the perfect outfit that resonates with your style and personality.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'core:contact' %}">Contact Us</a>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative">
+            <div class="overlay overlay-bg"></div>
+            <a class="play-btn" href="#">
+                <img src="#" class="img-fluid" alt="">
+            </a>
+            <img src="{% static 'images/dress.jpg' %}" class="img-fluid w-100 rounded" alt="">
+        </div>
+    </div>
 </div>
+</section>
+<!-- End video-sec Area -->
+
+
+
+<!-- Start top-course Area -->
+<section class="top-course-area section-gap" style="background-color: #f2f2f2;">
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="menu-content pb-20 col-lg-10">
+            <div class="title text-center">
+                <h1 class="mb-10 text-custom">Ready to Elevate Your Wardrobe?</h1>
+                <p>Explore our ready-to-wear collection today and experience the elegance of Prouesse Fashion. Contact us for any inquiries or to place an order.</p>
+            </div>
+        </div>
+    </div>                  
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-3 course-left">
+            <div class="single-course text-center">
+                <span class="lnr lnr-rocket icon-top"></span>
+                <a href="#" class="mb-10 text-custom"><h4>High-Quality Fabrics</h4></a>
+                <p>We use the finest fabrics to ensure durability and comfort, providing you with outfits that are not only beautiful but also long-lasting.</p>
+            </div>
+            <div class="single-course text-center">
+                <span class="lnr lnr-cog icon-top"></span>
+                <a href="#" class="mb-10 text-custom"><h4>Unique Designs</h4></a>
+                <p>Our designs are inspired by African culture and modern fashion trends, giving you a unique and stylish look.</p>
+            </div>                          
+        </div>
+        <div class="col-lg-6 course-middle">
+            <img class="img-fluid mx-auto d-block rounded" src="{% static 'images/woman.jpg' %}" alt="">
+        </div>
+        <div class="col-lg-3 course-right">
+            <div class="single-course text-center">
+                <span class="lnr lnr-apartment icon-top"></span>
+                <a href="#" class="mb-10 text-custom"><h4>Customer Satisfaction</h4></a>
+                <p>We prioritize our customers’ needs and strive to provide exceptional service. Your satisfaction is our top priority.</p>
+            </div>
+            <div class="single-course text-center">
+                <span class="lnr lnr-phone icon-top"></span>
+                <a href="#" class="mb-10 text-custom"><h4>Delivering Time.</h4></a>
+                <p>
+                    We are passionate about fashion and committed to delivering the best to our clients. If you have any questions or would like to place an order, please do not hesitate to contact us. 
+                </p>
+            </div>                                                      
+        </div>
+    </div>
+</div>  
+</section>
+<!-- End top-course Area -->
+
+
+
 {% endblock %} 

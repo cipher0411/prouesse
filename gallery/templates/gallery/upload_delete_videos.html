@@ -1,0 +1,54 @@
+{% extends "gallery/base.html" %}
+{% load static %}
+{% block title %}Upload and Delete Videos{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Upload Video</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" name="upload">Upload</button>
+    </form>
+
+    <h2 class="mt-5">Delete Video</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ delete_form.as_p }}
+        <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+    </form>
+
+    <h2 class="mt-5">Videos</h2>
+    <div class="row">
+        {% for video in videos %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center" style="background-color: #b98936; color: white;">
+                    <h5 class="card-title m-0">{{ video.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="video-container mb-3">
+                        <video controls poster="{{ video.poster_image.url }}" class="img-fluid">
+                            <source src="{{ video.video_file.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="card-text">{{ video.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .video-container {
+        height: 300px;
+        overflow: hidden;
+    }
+    .video-container video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}

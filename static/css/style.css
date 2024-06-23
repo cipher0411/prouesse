@@ -132,6 +132,10 @@
 }
 
 
+.text-custom {
+    color: #990f4b;
+}
+
 /*** Topbar css ***/
 
 
@@ -234,7 +238,7 @@
     margin-bottom: 45px;
     padding: 90px 0;
     text-align: center;
-    background: linear-gradient(rgba(153, 15, 75, 0.671), rgba(153, 15, 75, 0.842)), url(../img/sewing.jpg);
+    background: linear-gradient(rgba(153, 15, 75, 0.671), rgba(153, 15, 75, 0.842)), url(../images/apparel.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -273,7 +277,6 @@
 
 .page-header a::after {
     position: absolute;
-    content: "/";
     width: 8px;
     height: 8px;
     top: -2px;

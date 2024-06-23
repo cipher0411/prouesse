@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Profile
 from django.utils.translation import gettext_lazy as _
-
+from .models import Contact
 
 def signup_view(request):
     if request.method == 'POST':
@@ -36,35 +36,10 @@ def signup_view(request):
 
 
 
-
-# class LoginForm(AuthenticationForm):
-#     username = forms.CharField(widget=forms.TextInput(attrs={
-#         'placeholder': 'Your username',
-#         'class': 'w-full py-3 px-6 rounded-xl'
-#     }))
-#     password = forms.CharField(widget=forms.PasswordInput(attrs={
-#         'placeholder': 'Your password',
-#         'class': 'w-full py-3 px-6 rounded-xl'
-#     }))
-
-#     def clean(self):
-#         super().clean()
-#         username = self.cleaned_data.get('username')
-#         password = self.cleaned_data.get('password')
-
-#         if username and password:
-#             try:
-#                 user = User.objects.get(username=username)
-#             except User.DoesNotExist:
-#                 user = None
-
-#             if user and user.check_password(password):
-#                 self.user = user
-#             else:
-#                 raise forms.ValidationError("Invalid username or password.")
-
-#         return self.cleaned_data
-    
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'phone', 'service', 'message']
     
     
     

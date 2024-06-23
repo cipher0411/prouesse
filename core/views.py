@@ -31,6 +31,7 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 from .models import Profile, otp_Profile
 from django.views import View 
+from .forms import ContactForm
 
 
 
@@ -122,6 +123,9 @@ def category_items(request, category_id):
         'category': category_obj,
         'items': items,
     })
+
+def faq_view(request):
+    return render(request, 'core/faq.html')
 
 # Contact page
 def contact(request):
@@ -402,3 +406,42 @@ def test_email(request):
     except Exception as e:
         return HttpResponse(f"Error: {e}")
     
+
+
+
+
+
+
+def contact(request):
+    if request.method == 'POST':
+        # Extract data from POST request
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        service = request.POST.get('service')
+        message = request.POST.get('message')
+
+        # Perform basic validation (you can add more validation as needed)
+        if not name or not email or not message:
+            messages.error(request, 'Please fill in all required fields.')
+        else:
+            # Create a new instance of the ContactForm using extracted data
+            form = ContactForm({
+                'name': name,
+                'email': email,
+                'phone': phone,
+                'service': service,
+                'message': message,
+            })
+            # Save the form if it's valid
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your message has been sent successfully, we will get back to you as soon as possible!')
+                return redirect('core:contact')  # Redirect to contact page after successful submission
+            else:
+                messages.error(request, 'Error submitting your message. Please try again.')
+
+    else:
+        form = ContactForm()  # Create a blank form instance for GET requests
+
+    return render(request, 'core/contact.html', {'form': form})

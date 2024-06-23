@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Gallery{% endblock %}
+{% block content %}
+
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Student Portal</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'core:student_portal' %}">Student Portal</a>
+                <a href="{% url 'gallery:gallery' %}">Video Gallery</a>
+                <a href="{% url 'gallery:image_gallery' %}">Image Gallery</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'gallery:assignment_list' %}">Assignments</a>
+                    <a href="{% url 'gallery:ebook_list' %}">Ebooks</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<div class="container mt-5">
+    <div class="row">
+        {% for video in videos %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center" style="background-color: #990f4b; color: white;">
+                    <h5 class="card-title m-0">{{ video.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="video-container mb-3">
+                        <video controls poster="{{ video.poster_image.url }}" class="img-fluid">
+                            <source src="{{ video.video_file.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="card-text">{{ video.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .video-container {
+        height: 300px;
+        overflow: hidden;
+    }
+    .video-container video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}

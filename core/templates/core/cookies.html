@@ -7,62 +7,33 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .cookie-policy-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #1a1717;
-        }
-        
-        .cookie-policy-container h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .cookie-policy-container p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        #cookie-consent-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #f0f0f0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .cookie-buttons {
-            display: flex;
-            gap: 10px;
-        }
+   #cookie-consent-banner {
+    z-index: 1000; /* Make sure it's on top of other content */
+}
+
     </style>
 </head>
 <body>
-    <div id="cookie-consent-banner" class="bg-light p-3">
-        <p class="m-0">We use cookies to ensure you get the best experience on our website. 
-            <a href="{% url 'core:cookies' %}" id="read-more">Read more</a>.
+<!-- Cookie section -->
+<div id="cookie-consent-banner" class="bg-dark text-white p-3 fixed-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">We use cookies to ensure you get the best experience on our website. 
+            <a href="{% url 'core:cookies' %}" id="read-more" class="text-warning">Read more</a>.
         </p>
         <div class="cookie-buttons">
-            <button id="accept-cookies" onclick="acceptCookies()" class="btn btn-primary">Accept</button>
+            <button id="accept-cookies" onclick="acceptCookies()" class="btn btn-warning me-2">Accept</button>
             <button id="deny-cookies" onclick="denyCookies()" class="btn btn-secondary">Deny</button>
         </div>
     </div>
+</div>
+
 
     <div class="container mt-5">
-        <h1>Welcome to Our Website!</h1>
+        <h1>Welcome to Prouesse!</h1>
         <div class="jumbotron">
             <p><strong>Cookie Policy</strong></p>
 
-            <p>This Cookie Policy explains how [Your Company Name] ("we", "us", or "our") uses cookies and similar technologies to recognize you when you visit our website at [Your Website URL] ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
+            <p>This Cookie Policy explains how Prouesse uses cookies and similar technologies to recognize you when you visit our website at https://prouessefashion.com. It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
 
             <h4>What are cookies?</h4>
             <p>Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners to make their websites work, or to work more efficiently, as well as to provide reporting information.</p>
@@ -100,7 +71,7 @@
                 <li>By visiting this page on our website: <a href="{% url 'core:contact' %}">contact us</a></li>
             </ul>
 
-            <p>This Cookie Policy was last updated on [Date].</p>
+            <p>This Cookie Policy was last updated on 05/06/2024.</p>
         </div>
     </div>
 

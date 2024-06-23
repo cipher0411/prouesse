@@ -90,12 +90,12 @@
                             </div>
                         </div>
                         
-                        <div class="cart-wrapper ms-3">
+                        <!--                        <div class="cart-wrapper ms-3">
                             
                                 <i class="fa fa-shopping-cart cart-icon"></i> Cart
                                 <span class="badge bg-dark text-warning ms-1 rounded-pill" id="car_quantity">{{ request.user.cart.items.count }}</span>
                             </a>
-                        </div>
+                        </div>-->
                         
                         {% if messages %}
                             {% for message in messages %}
@@ -110,12 +110,12 @@
                     {% else %}
                         <a href="{% url 'core:signup' %}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Sign Up</a>
                         <a href="{% url 'core:login' %}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Login</a>
-                        <div class="cart-wrapper ms-3">
+                                    <!--                        <div class="cart-wrapper ms-3">
                            
                                 <i class="fa fa-shopping-cart cart-icon"></i> Cart
                                 <span class="badge bg-dark text-warning ms-1 rounded-pill" id="car_quantity">{{ request.user.cart.items.count }}</span>
                             </a>
-                        </div>
+                        </div>-->
                     {% endif %}
                 </div>
             </div>

@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .models import Category, Item, ItemImage, Cart, CartItem, Order
 from .forms import NewItemForm, EditItemForm
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 
@@ -48,7 +49,7 @@ def detail(request, pk):
         'related_items': related_items
     })
 
-@login_required
+@staff_member_required
 def new(request):
     if request.method == 'POST':
         form = NewItemForm(request.POST, request.FILES)

@@ -1,9 +1,104 @@
 {% extends "core/base.html" %}
-
-{% block title %}Contact{% endblock %}
+{% load static %}
+{% block title %}Custom Made Dresses{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>custom made page page page</h1>
-</div>
+
+      <!-- Page Header Start -->
+      <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Custom Made Dresses</h2>
+                </div>
+                <div class="col-12">
+                    <a href="{% url 'core:index' %}">Home</a>
+                    <a href="{% url 'core:custom_made' %}">Custom Made Dresses</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- Page Header End -->
+
+
+
+      <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <h2 class="text-custom">Some of Our Design</h2>
+                        <div class="col-12 text-end">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                        <div class="col-12 text-end">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                        <div class="col-12 text-end">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                        <div class="col-12 text-end">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="section-title">
+                        <p class="fs-5 fw-medium fst-italic text-custom">Ready to Create Your Custom Dress?</p>
+                        <p>Contact us today to schedule a consultation and start designing your custom-made dress with Prouesse Fashion. Let us bring your vision to life.</p>
+                    </div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-12">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                        <div class="col-sm-12">
+                            <h4 class="text-custom">Expert Craftsmanship</h4>
+                            <p class="mb-0">Our team of experienced designers and tailors use the highest quality fabrics and materials to create dresses that are not only beautiful but also durable and comfortable.</p>
+                        </div>
+                    </div>
+                    <div class="border-top mb-4"></div>
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <h5 class="text-custom">Unique Designs</h5>
+                            <p class="mb-0">We offer a wide range of design options, from traditional African patterns to modern styles, allowing you to create a dress that is truly one-of-a-kind.</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <img class="img-fluid mx-auto d-block rounded large-image" src="{% static 'images/slider5.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5 class="text-custom">Personalized Fit</h5>
+                        <p>Our custom-made dresses are tailored to your exact measurements, ensuring a perfect fit that complements your body shape and style.</p>
+                        <a class="btn btn-primary text-uppercase" href="{% url 'core:contact' %}">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+      
+
+      <!-- Start home-about Area -->
+<section class="home-about-area">
+    <div class="container-fluid">                
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 no-padding home-about-left">
+                <img class="img-fluid mx-auto d-block rounded" src="{% static 'images/slider5.jpg' %}" alt="">
+            </div>
+            <div class="col-lg-6 no-padding home-about-right">
+                <h1 class="text-custom">Create Your Dream Outfit</h1>
+                <p>
+                    <span>Tailored Perfection, Crafted Just for You. </span>
+                </p>
+                <p>Our custom-made dresses are crafted from premium fabrics and tailored to fit you perfectly. Each piece is designed with attention to detail, ensuring superior quality and a unique, personalized look.</p>
+                <p>Whether it's for a special occasion, a traditional ceremony, or simply to express your unique style, our custom-made dresses are designed to exceed your expectations. Explore our gallery for inspiration or contact us to schedule a consultation.</p>
+                <a class="btn btn-primary text-uppercase" href="{% url 'gallery:image_gallery' %}">Gallery</a>
+            </div>
+        </div>
+    </div>  
+</section>
+<!-- End home-about Area -->
 {% endblock %} 

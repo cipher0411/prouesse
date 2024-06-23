@@ -1,0 +1,19 @@
+{% extends "gallery/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Home</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'gallery:index' %}">Home</a>
+                <a href="{% url 'gallery:upload_delete_videos' %}">Upload & Delete Videos</a>
+                <a href="{% url 'gallery:upload_delete_images' %}">Upload & Delete Images</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

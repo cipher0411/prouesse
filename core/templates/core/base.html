@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -14,11 +15,15 @@
   <!-- Owl Carousel CSS -->
   <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}">
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/css/icons.css">
   <link rel="stylesheet" href="/static/css/style.css">
 
   <title>{% block title %}{% endblock %} | Prouesse</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/scissors.png' %}">
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
   {% include 'core/navbar.html' %}
@@ -63,13 +68,13 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Quick Links</h5>
-          <a class="btn btn-link" href="about.html">About Us</a>
-          <a class="btn btn-link" href="contact.html">Contact Us</a>
-          <a class="btn btn-link" href="FAQ.html">FAQ</a>
-          <a class="btn btn-link" href="#">Market Place</a>
-          <a class="btn btn-link" href="#">Register</a>
-          <a class="btn btn-link" href="gallery.html">Gallery</a>
-          <a class="btn btn-link" href="cookie.html">Cookies & Terms Policy</a>
+          <a class="btn btn-link" href="{% url 'core:about' %}">About Us</a>
+          <a class="btn btn-link" href="{% url 'core:contact' %}">Contact Us</a>
+          <a class="btn btn-link" href="{% url 'core:faq' %}">FAQ</a>
+          <a class="btn btn-link" href="{% url 'item:items' %}">Market Place</a>
+          <a class="btn btn-link" href="{% url 'core:signup' %}">Sign Up</a>
+          <a class="btn btn-link" href="{% url 'gallery:image_gallery' %}">Gallery</a>
+          <a class="btn btn-link" href="{% url 'core:terms_and_conditions' %}">Cookies & Terms Policy</a>
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Newsletter</h5>
@@ -97,16 +102,19 @@
   </div>
   <!-- Footer End -->
 
-  <!-- Cookie section -->
-  <div id="cookie-consent-banner">
-    <p>We use cookies to ensure you get the best experience on our website. 
-      <a href="{% url 'core:cookies' %}" id="read-more">Read more</a>.
-    </p>
-    <div class="cookie-buttons">
-      <button id="accept-cookies" onclick="acceptCookies()">Accept</button>
-      <button id="deny-cookies" onclick="denyCookies()">Deny</button>
-    </div>
+<!-- Cookie section -->
+<div id="cookie-consent-banner" class="bg-dark text-white p-3 fixed-bottom">
+  <div class="container d-flex justify-content-between align-items-center">
+      <p class="mb-0">We use cookies to ensure you get the best experience on our website. 
+          <a href="{% url 'core:cookies' %}" id="read-more" class="text-warning">Read more</a>.
+      </p>
+      <div class="cookie-buttons">
+          <button id="accept-cookies" onclick="acceptCookies()" class="btn btn-warning me-2">Accept</button>
+          <button id="deny-cookies" onclick="denyCookies()" class="btn btn-secondary">Deny</button>
+      </div>
   </div>
+</div>
+
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>  
@@ -118,3 +126,9 @@
   <script src="/static/js/cookie.js"></script>
 </body>
 </html>
+
+<style>
+  #cookie-consent-banner {
+    z-index: 1000; /* Make sure it's on top of other content */
+}
+</style>

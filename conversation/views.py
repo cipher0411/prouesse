@@ -49,7 +49,6 @@ def inbox(request):
         'conversations': conversations,
         # 'unread_count': unread_count
     })
-
 @login_required
 def detail(request, pk):
     conversation = get_object_or_404(Conversation, pk=pk, members=request.user)
@@ -66,6 +65,11 @@ def detail(request, pk):
             return redirect('conversation:detail', pk=pk)
     else:
         form = ConversationMessageForm()
+    
+    return render(request, 'conversation/detail.html', {
+        'conversation': conversation,
+        'form': form
+    })
 
     # Mark all messages as read when the user views the conversation
     # conversation.messages.filter(is_read=False).exclude(created_by=request.user).update(is_read=True)

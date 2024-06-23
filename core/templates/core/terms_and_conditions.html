@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms and Conditions</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Terms and Conditions{% endblock %}
+
+{% block content %}
+
     <div class="container mt-5">
         <h2 class="mb-4">Terms and Conditions</h2>
-        <p>Welcome to our online shopping website. Please read our terms and conditions before signing up.</p>
+        <p>Welcome to Prouesse Fashion. Please read our terms and conditions before signing up.</p>
         
         <div class="card mb-3">
             <div class="card-header">
@@ -38,7 +28,8 @@
         
         <div class="card mb-3">
             <div class="card-header">
-                <h3>3. Cookies</h3>
+                <h3>3. Description of Goods
+                </h3>
             </div>
             <div class="card-body">
                 <p>We use cookies to enhance your browsing experience and provide personalized content.</p>
@@ -50,7 +41,34 @@
                 <h3>4. Payment</h3>
             </div>
             <div class="card-body">
-                <p>All payments are processed securely through our trusted payment partners.</p>
+                <p>All payments are processed securely through our trusted payment partner, Stripe. By using our website, you acknowledge that any breaches or theft during transactions should be reported to Stripe, as they are responsible for the security of our payment gateway.</p>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>5. Shipping policy</h3>
+            </div>
+            <div class="card-body">
+                <p>We use cookies to enhance your browsing experience and provide personalized content.</p>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>6. Return policy</h3>
+            </div>
+            <div class="card-body">
+                <p>We use cookies to enhance your browsing experience and provide personalized content.</p>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>7. Cookies</h3>
+            </div>
+            <div class="card-body">
+                <p>We use cookies to enhance your browsing experience and provide personalized content.</p>
             </div>
         </div>
 
@@ -59,8 +77,4 @@
         </p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}

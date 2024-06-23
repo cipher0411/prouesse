@@ -1,56 +1,31 @@
 {% extends "core/base.html" %}
-
-{% block title %}Contact{% endblock %}
+{% load static %}
+{% block title %}Student Portal{% endblock %}
 
 {% block content %}
 
-<div class="container mt-4 mb-4">
-<!--================Home Banner Area =================-->
-<section class="banner_area" style="background-color: #990f4b;">
-    <div class="banner_inner d-flex align-items-center justify-content-center" style="height: 300px; position: relative;">
-        <div class="container-fluids text-center text-white position-relative" style="z-index: 1;">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="container border rounded p-4">
-                        <div class="row clock_sec clockdiv" id="clockdiv" style="position: relative;">
-                            <div class="col-lg-12">
-                                <h1 class="mb-3">Global Certification</h1>
-                                <p>
-                                    Gain international recognition with our globally certified courses, 
-                                    validating your skills and knowledge in the fashion industry worldwide.
-                                </p>
-                            </div>
-                            <div class="col clockinner1 clockinner">
-                                <div class="rounded-circle clock clock-hover" style="width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;">
-                                    <a href="{% url 'core:ebook' %} class"text-primary">E-books & Articles</a>
-                                </div>
-                            </div>
-                            <div class="col clockinner clockinner1">
-                                <div class="rounded-circle clock clock-hover" style="width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;">
-                                    <a href="{% url 'core:ebook' %}">E-books & Articles</a>
-                                </div>
-                            </div>
-                            <div class="col clockinner clockinner1">
-                                <div class="rounded-circle clock clock-hover" style="width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;">
-                                    <a href="{% url 'core:student_practical' %}">Student Projects</a>
-                                </div>
-                            </div>
-                            <div class="col clockinner clockinner1">
-                                <div class="rounded-circle clock clock-hover" style="width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;">
-                                    <a href="{% url 'core:ebook' %}">E-books & Articles</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Student Portal</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'core:student_portal' %}">Student Portal</a>
+                <a href="{% url 'gallery:gallery' %}">Video Gallery</a>
+                <a href="{% url 'gallery:image_gallery' %}">Image Gallery</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'gallery:assignment_list' %}">Assignments</a>
+                    <a href="{% url 'gallery:ebook_list' %}">Ebooks</a>
+                {% endif %}
             </div>
         </div>
-        <div class="overlay" style="background-color: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%;"></div>
     </div>
-</section>
+</div>
+<!-- Page Header End -->
 
-
-<!--================End Home Banner Area =================-->
 
 
 
@@ -65,54 +40,60 @@
                 <div class="content_wrapper">
                     <h4 class="title" style="color: #990f4b;">Objectives</h4>
                     <div class="content mb-4">
-                        <p>When you enter into any new area of science, you almost always find yourself with a baffling new language of technical terms to learn before you can converse with the experts. This is certainly true in astronomy both in terms of terms that refer to the cosmos and terms that describe the tools of the trade, the most prevalent being the telescope.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                        <p>Prouesse Fashion aims to empower aspiring fashion designers and professionals by providing comprehensive and practical education in various aspects of fashion design and creation. The objective is to nurture creativity, technical skills, and industry knowledge among students, preparing them for successful careers in the dynamic world of fashion.</p>
                     </div>
 
                     <h4 class="title" style="color: #990f4b;">Eligibility</h4>
                     <div class="content mb-4">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                        <p>Prouesse Fashion welcomes individuals from diverse backgrounds, offering courses designed to nurture a passion for fashion design and creation. Whether you're a complete beginner or seasoned enthusiast, our programs require no prior experience in fashion. We encourage applicants with a strong interest in fashion to explore our offerings, ensuring each student can embark on a journey of skill development and creative exploration. Specific course requirements may vary, but all applicants are invited to engage and expand their knowledge within our inclusive learning environment.</p>
                     </div>
 
                     <h4 class="title" style="color: #990f4b;">Course Outline</h4>
                     <div class="content">
                         <ul class="list-group mb-4">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Introduction Lesson</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Fashion Design Fundamentals</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Basics of HTML</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Sewing Techniques and Garment Construction</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Getting Know about HTML</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Pattern Making and Draping</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Tags and Attributes</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Pattern Drafting</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Basics of CSS</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Textile Science and Fabric Technology</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Getting Familiar with CSS</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Fashion Illustration and CAD</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Introduction to Bootstrap</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Advanced Couture Techniques</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Responsive Design</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Fashion Marketing and Merchandising</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Canvas in HTML 5</span>
-                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="#">View Details</a>
+                                <span>Sustainable Fashion and Ethical Practices</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Fashion Entrepreneurship</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Personal Styling and Image Consulting</span>
+                                <a class="btn btn-primary btn-sm text-uppercase" style="background-color: #990f4b; border: none;" href="{% url 'gallery:gallery' %}">View Details</a>
                             </li>
                         </ul>
                     </div>
@@ -123,11 +104,11 @@
                 <ul class="list-group mb-4">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>Trainer’s Name</span>
-                        <span style="color: #990f4b;">George Mathews</span>
+                        <span style="color: #990f4b;">Esther Uwahamen</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>Course Fee</span>
-                        <span style="color: #990f4b;">$230</span>
+                        <span style="color: #990f4b;">£300</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>Available Seats</span>
@@ -135,16 +116,14 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>Schedule</span>
-                        <span style="color: #990f4b;">2.00 pm to 4.00 pm</span>
+                        <span style="color: #990f4b;">4.00 pm to 6.00 pm</span>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-secondary btn-block text-uppercase mb-4" style="background-color: #990f4b; border: none;">Enroll the course</a>
-
-                <h4 class="title mb-4" style="color: #990f4b;">Reviews</h4>
+                <a href="https://app.zoom.us/wc?_x_zm_rtaid=M0ioKsifRFOsWhnbQXPPew.1719128754558.88e296f167671c33fb3045db3eaf0081&_x_zm_rhtaid=820" class="btn btn-secondary btn-block text-uppercase mb-4" style="background-color: #990f4b; border: none;">Join Class</a>
                 <div class="content">
                     <div class="review-top row pt-3 mb-4">
                         <div class="col-lg-12">
-                            <h6 class="mb-3" style="color: #990f4b;">Provide Your Rating</h6>
+                            <h6 class="mb-3" style="color: #990f4b;">Our Rating</h6>
                             <div class="d-flex flex-row reviews justify-content-between mb-2">
                                 <span>Quality</span>
                                 <div class="star">
@@ -180,22 +159,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feedback mb-4">
+                    <!--                    <div class="feedback mb-4">
                         <h6 style="color: #990f4b;">Your Feedback</h6>
                         <textarea name="feedback" class="form-control" cols="10" rows="5"></textarea>
                         <div class="mt-2 text-right">
                             <a href="#" class="btn btn-secondary text-uppercase" style="background-color: #990f4b; border: none;">Submit</a>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="comments-area mb-4">
                         <div class="comment-list mb-3">
                             <div class="single-comment single-reviews d-flex">
                                 <div class="user d-flex align-items-center">
                                     <div class="thumb">
-                                        <img src="img/blog/c1.jpg" alt="" class="rounded-circle">
+                                        <img src="{% static 'images/mannequin.jpg' %}" alt="" class="rounded-circle">
                                     </div>
                                     <div class="desc ml-3">
-                                        <h5><a href="#" style="color: #990f4b;">Emilly Blunt</a></h5>
+                                        <h5><a href="#" style="color: #990f4b;">Pattern Draping</a></h5>
                                         <div class="star">
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
@@ -203,10 +182,6 @@
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                         </div>
-                                        <p class="comment">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -215,10 +190,10 @@
                             <div class="single-comment single-reviews d-flex">
                                 <div class="user d-flex align-items-center">
                                     <div class="thumb">
-                                        <img src="img/blog/c2.jpg" alt="" class="rounded-circle">
+                                        <img src="{% static 'images/costume.jpg' %}" alt="" class="rounded-circle">
                                     </div>
                                     <div class="desc ml-3">
-                                        <h5><a href="#" style="color: #990f4b;">Elsie Cunningham</a></h5>
+                                        <h5><a href="#" style="color: #990f4b;">Pattern Ilustration</a></h5>
                                         <div class="star">
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
@@ -226,10 +201,6 @@
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                         </div>
-                                        <p class="comment">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -238,10 +209,10 @@
                             <div class="single-comment single-reviews d-flex">
                                 <div class="user d-flex align-items-center">
                                     <div class="thumb">
-                                        <img src="img/blog/c3.jpg" alt="" class="rounded-circle">
+                                        <img src="{% static 'images/fashion draft.jpg' %}" alt="" class="rounded-circle">
                                     </div>
                                     <div class="desc ml-3">
-                                        <h5><a href="#" style="color: #990f4b;">Maria Luna</a></h5>
+                                        <h5><a href="#" style="color: #990f4b;">Pattern Drafting</a></h5>
                                         <div class="star">
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
                                             <i class="ti-star checked" style="color: #990f4b;"></i>
@@ -249,10 +220,6 @@
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                             <i class="ti-star" style="color: #990f4b;"></i>
                                         </div>
-                                        <p class="comment">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore.
-                                        </p>
                                     </div>
                                 </div>
                             </div>

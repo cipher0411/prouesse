@@ -1,0 +1,127 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Image Gallery{% endblock %}
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Student Portal</h2>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'core:student_portal' %}">Student Portal</a>
+                <a href="{% url 'gallery:gallery' %}">Video Gallery</a>
+                <a href="{% url 'gallery:image_gallery' %}">Image Gallery</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'gallery:assignment_list' %}">Assignments</a>
+                    <a href="{% url 'gallery:ebook_list' %}">Ebooks</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container mt-5">
+    <h3 class="text-center text-custom">Image Categories</h3>
+    <p class="text-center">Choose your style here and contact us so that we can make it for you.</p>
+    <ul id="category-tabs" class="nav nav-pills mb-3 justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active btn btn-sm custom-btn-color" data-toggle="tab" href="#all">All</a>
+        </li>
+        {% for category in categories %}
+        <li class="nav-item">
+            <a class="nav-link btn btn-sm custom-btn-color" data-toggle="tab" href="#category{{ category.id }}">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content">
+        <div id="all" class="tab-pane fade show active">
+            <div class="row">
+                {% for image in images %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="image-container">
+                            <img src="{{ image.image.url }}" class="card-img-top img-fluid" alt="{{ image.title }}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image.title }}</h5>
+                            <p style="height: 60px; overflow: hidden; background-color: #990f4b; color: white; padding: 10px; border-radius: 5px;" class="card-text">{{ image.description }}</p>
+                            <form method="post" action="{% url 'gallery:upload_delete_images' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="image_id" value="{{ image.id }}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% for category in categories %}
+        <div id="category{{ category.id }}" class="tab-pane fade">
+            <div class="row">
+                {% for image in category.images.all %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="image-container">
+                            <img src="{{ image.image.url }}" class="card-img-top img-fluid" alt="{{ image.title }}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image.title }}</h5>
+                            <p style="height: 60px; overflow: hidden; background-color: #990f4b; color: white; padding: 10px; border-radius: 5px;" class="card-text">{{ image.description }}</p>
+                            <form method="post" action="{% url 'gallery:upload_delete_images' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="image_id" value="{{ image.id }}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .image-container {
+        height: 300px;
+        overflow: hidden;
+    }
+    .image-container img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-link.btn {
+        margin-right: 5px;
+    }
+    .nav-link.custom-btn-color {
+        background-color: #990f4b; /* Custom color */
+        color: white;
+    }
+    .nav-link.custom-btn-color:hover {
+        background-color: #3e21e6; /* Darker shade on hover */
+        color: white;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Show corresponding tab on click
+        $('#category-tabs a').on('click', function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        // Keep active tab on page reload
+        var url = window.location.href;
+        var activeTab = url.substring(url.indexOf("#"));
+        $('.nav-link[href="' + activeTab + '"]').tab('show');
+    });
+</script>
+
+{% endblock %}

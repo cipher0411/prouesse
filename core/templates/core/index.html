@@ -25,7 +25,7 @@
                         <p class="mb-5 fs-5">Step into the world of Prouesse and unlock your potential as a fashion aficionado. From mastering the art of design to sewing your unique creations, we're here to guide you on your journey to fashion excellence. 
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Join Us</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'core:signup' %}">Join Us</a>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <p class="mb-5 fs-5">Embark on a thrilling adventure into the realm of style and creativity with Prouesse. Whether you're a budding designer, a seasoned tailor, or a fashion enthusiast, our academy offers the perfect blend of education, inspiration, and opportunity. 
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Join Us</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'core:signup' %}">Join Us</a>
                         </div>
                     </div>
                 </div>
@@ -51,20 +51,20 @@
                         <p class="mb-5 fs-5">At Prouesse, we're more than just an academy—we're a launchpad for your fashion career. Explore our comprehensive courses, refine your skills, and carve your path to success in the dynamic world of fashion. 
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Join Us</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'core:signup' %}">Join Us</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{% static 'images/kids-1.jpeg' %}" class="img-fluid" alt="Image">
+                <img src="{% static 'images/slider5.jpg' %}" class="img-fluid" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h2 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Welcome to Prouesse, where Fashion Meets Mastery</h2>
                         <p class="mb-5 fs-5">Join us at Prouesse, where innovation meets tradition in the realm of fashion education. Our expert instructors, state-of-the-art facilities, and hands-on approach ensure that every student receives a transformative learning experience.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Join Us</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'core:signup' %}">Join Us</a>
                         </div>
                     </div>
                 </div>
@@ -143,8 +143,8 @@
 <div class="container mt-6 px-6 py-12 bg-light rounded-xl">
     <h2 class="mb-4 text-center">Market Place</h2>
 
-    <div class="container mt-6 px-6 py-12 bg-light rounded-xl">
-        <h2 class="mb-12 text-center">Newest items</h2>
+    <!--<div class="container mt-6 px-6 py-12 bg-light rounded-xl">
+        <h2 class="mb-12 text-center">Newest items</h2>-->
 
         <div class="row">
             {% for item in items %}
@@ -262,7 +262,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="main_title text-white">
-                    <h2 class="mb-3">Client Say About Us</h2>
+                    <h2 class="mb-3">What Clients and Student Say</h2>
                     <p class="text-secondary">
                         These testimonials reflect the satisfaction and positive experiences expressed by students and clients of Prouesses Fashion School.
                     </p>
@@ -272,17 +272,18 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="8000"> <!-- Adjusted interval -->
+                <div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/precious.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Omoh</h4>
+                                            <h4>Precious</h4>
                                             <p>
                                                 Prouesses Fashion School gave me the confidence and skills to 
                                                 pursue my dream in the fashion industry. It was an invaluable experience.
@@ -293,11 +294,11 @@
 
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/peace1.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Ofure</h4>
+                                            <h4>Peace</h4>
                                             <p>
                                                 Attending Prouesses Fashion School was the best decision I made for my 
                                                 career. Highly recommended for anyone passionate about fashion.
@@ -312,11 +313,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/seun.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Elite</h4>
+                                            <h4>Seun</h4>
                                             <p>
                                                 Prouesses Fashion transformed my vision into a reality with their 
                                                 impeccable tailoring. Their attention to detail is unmatched.
@@ -327,11 +328,11 @@
 
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/happy.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Saden</h4>
+                                            <h4>Happy</h4>
                                             <p>
                                                 I wouldn't trust anyone else with my couture; Prouesses Fashion 
                                                 consistently exceeds my expectations with their craftsmanship.
@@ -342,16 +343,15 @@
                             </div>
                         </div>
 
-                        <!-- Add more carousel items as needed -->
                         <div class="carousel-item">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/tife2.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Martin</h4>
+                                            <h4>Tife</h4>
                                             <p>
                                                 Prouesses Fashion School equips students with the skills needed to thrive in 
                                                 the competitive fashion industry. The training was comprehensive and hands-on.
@@ -362,11 +362,11 @@
 
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/sharon.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Davil</h4>
+                                            <h4>Sharon</h4>
                                             <p>
                                                 I gained practical experience and industry insights that set me apart in 
                                                 the fashion world. Prouesses Fashion School is truly exceptional.
@@ -381,11 +381,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/lizzy.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Adam</h4>
+                                            <h4>Lizzy</h4>
                                             <p>
                                                 Prouesses Fashion pays meticulous attention to detail; their craftsmanship 
                                                 is second to none. Their dedication to quality is impressive.
@@ -396,11 +396,11 @@
 
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/favor.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Ben</h4>
+                                            <h4>Favor</h4>
                                             <p>
                                                 Prouesses Fashion took my idea and turned it into a stunning piece 
                                                 that exceeded my expectations. I am thrilled with their work.
@@ -416,11 +416,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/doyin.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Adam</h4>
+                                            <h4>Doyin</h4>
                                             <p>
                                                 Prouesses Fashion School provided me with the skills and confidence 
                                                 to launch my own fashion line. The support and mentorship were invaluable.
@@ -431,11 +431,11 @@
 
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/esther.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Ben</h4>
+                                            <h4>Esther</h4>
                                             <p>
                                                 I learned the importance of sustainability and ethics in fashion 
                                                 at Prouesses Fashion School. It was a transformative experience.
@@ -446,119 +446,15 @@
                             </div>
                         </div>
 
-
                         <div class="carousel-item">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
+                                        <img src="{% static 'images/toju.jpeg' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
                                     </div>
                                     <div class="container py-3 text-white">
                                         <div class="testi_text">
-                                            <h4>Adam</h4>
-                                            <p>
-                                                Prouesses Fashion designed a dress for me that made me feel confident 
-                                                and beautiful. Their designs are both elegant and stylish.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Ben</h4>
-                                            <p>
-                                                I appreciate the attention to detail and personalized service I receive 
-                                                from Prouesses Fashion. They always deliver exceptional results.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Adam</h4>
-                                            <p>
-                                                Prouesses Fashion School offers a well-rounded curriculum that covers all 
-                                                aspects of fashion design. The instructors are knowledgeable and supportive.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Ben</h4>
-                                            <p>
-                                                I appreciated the creative freedom and guidance I received at Prouesses 
-                                                Fashion School. It prepared me well for the fashion industry.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Adam</h4>
-                                            <p>
-                                                Prouesses Fashion tailored a suit for me that fits perfectly and 
-                                                looks sharp. Their tailoring expertise is impressive.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Ben</h4>
-                                            <p>
-                                                I trust Prouesses Fashion with all my alteration and tailoring 
-                                                needs; they always deliver on time and with precision.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="testi_item text-center">
-                                        <img src="{% static 'images/training icon.png' %}" alt="" class="img-fluid rounded-circle" style="max-width: 100px;">
-                                    </div>
-                                    <div class="container py-3 text-white">
-                                        <div class="testi_text">
-                                            <h4>Adam</h4>
+                                            <h4>Toju</h4>
                                             <p>
                                                 Prouesses Fashion School provided me with a solid foundation in both 
                                                 design and business. The courses were insightful and practical.
