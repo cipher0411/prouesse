@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 Django==5.0.6
 python-decouple==3.8
 python-dotenv==1.0.1
 stripe==9.12.0
+=======
+Django==5.0.6
+python-decouple==3.8
+python-dotenv==1.0.1
+stripe==9.12.0
+>>>>>>> 403c57acfb64eab0f157ef74ff6adc0953f5122c
